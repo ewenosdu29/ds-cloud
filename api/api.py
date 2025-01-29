@@ -82,3 +82,12 @@ def delete_etudiant(etudiant_id: int):
     if affected_rows == 0:
         raise HTTPException(status_code=404, detail="Etudiant non trouv\u00e9")
     return {"message": "Etudiant supprimé avec succés"}
+
+@app.get("/test-db")
+def test_db():
+    try:
+        connection = get_db_connection()
+        connection.close()
+        return {"message": "Connexion à RDS réussie"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
