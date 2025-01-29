@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiche de l'Animal</title>
+    <title>Fiche de l'Étudiant</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,18 +40,17 @@
 </head>
 <body>
     <header>
-        <h1>Fiche de l'Animal</h1>
+        <h1>Fiche de l'Étudiant</h1>
     </header>
     <main>
-        {% if animal %}
-            <h2>{{ animal.nom }}</h2>
-            <img src="{{ animal.image }}" alt="{{ animal.nom }}">
-            <p><strong>Description :</strong> {{ animal.description }}</p>
-            <p><strong>Décors :</strong> {{ animal.decor }}</p>
+        {% if etudiant %}
+            <h2>{{ etudiant.nom }} {{ etudiant.prenom }}</h2>
+            <img src="{{ etudiant.photo }}" alt="Photo de {{ etudiant.nom }} {{ etudiant.prenom }}">
+            <p><strong>Date de naissance :</strong> {{ etudiant.naissance }}</p>
         {% else %}
-            <p>Erreur : Aucun animal trouvé.</p>
+            <p>Erreur : Aucun étudiant trouvé.</p>
         {% endif %}
-        <a class="back-link" href="/">&larr; Retour à la liste</a>
+        <a class="back-link" href="/">&larr; Retour à la liste des étudiants</a>
     </main>
 </body>
 </html>

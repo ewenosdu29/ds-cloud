@@ -3,35 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des étudiants</title>
+    <title>Liste des Étudiants</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 1rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 1rem 0;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        .student-info {
+            display: flex;
+            align-items: center;
+        }
+        .student-info div {
+            margin-left: 1rem;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Liste des étudiants</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Date de naissance</th>
-                <th>Photo</th>
-            </tr>
-        </thead>
-        <tbody>
+    <header>
+        <h1>Bienvenue à l'école</h1>
+    </header>
+    <main>
+        <h2>Liste des Étudiants</h2>
+        <ul>
             {% for etudiant in etudiants %}
-            <tr>
-                <td>{{ etudiant.nom }}</td>
-                <td>{{ etudiant.prenom }}</td>
-                <td>{{ etudiant.naissance }}</td>
-                <td>
-                    <img src="{{ etudiant.photo }}" alt="Photo de {{ etudiant.nom }}" width="100">
-                </td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="4">Aucun étudiant trouvé</td>
-            </tr>
+                <li>
+                    <div class="student-info">
+                        <!-- Affichage de la photo de l'étudiant -->
+                        <img src="{{ etudiant.photo }}" alt="{{ etudiant.nom }}">
+                        <div>
+                            <h3><a href="/etudiant/{{ etudiant.id }}">{{ etudiant.nom }} {{ etudiant.prenom }}</a></h3>
+                            <p><strong>Date de naissance :</strong> {{ etudiant.naissance }}</p>
+                        </div>
+                    </div>
+                </li>
             {% endfor %}
-        </tbody>
-    </table>
+        </ul>
+    </main>
 </body>
 </html>
