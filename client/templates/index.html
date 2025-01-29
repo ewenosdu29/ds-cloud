@@ -1,52 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petit Zoo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        main {
-            padding: 1rem;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 0.5rem 0;
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Liste des étudiants</title>
 </head>
 <body>
-    <header>
-        <h1>Bienvenue au Petit Zoo</h1>
-    </header>
-    <main>
-        <h2>Liste des animaux</h2>
-        <ul>
-            {% for nom in noms %}
-                <li><a href="/fiche/{{ loop.index }}">{{ nom }}</a></li>
+    <h1>Liste des étudiants</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for etudiant in etudiants %}
+            <tr>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.prenom }}</td>
+                <td>{{ etudiant.naissance }}</td>
+                <td>
+                    <img src="{{ etudiant.photo }}" alt="Photo de {{ etudiant.nom }}" width="100">
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">Aucun étudiant trouvé</td>
+            </tr>
             {% endfor %}
-        </ul>
-    </main>
+        </tbody>
+    </table>
 </body>
 </html>
