@@ -16,12 +16,7 @@ def index():
     except requests.exceptions.RequestException as e:
         etudiants = []
         print(f"Erreur lors de la récupération des étudiants : {e}")
-    html = "<html><body><h1>Liste des Étudiants</h1><ul>"
-    for etudiant in etudiants:
-        html += f"<li>{etudiant['nom']} {etudiant['prenom']}</li>"
-    html += "</ul></body></html>"
-
-    return html
+    return render_template("index.html", etudiants=etudiants)
 
 if __name__ == "__main__":
     app.run(debug=True, host="127.0.0.1", port=8080)
